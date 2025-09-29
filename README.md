@@ -1,41 +1,38 @@
 #  Gemma labs
 
-This repo shows several labs on Gemma LLM:
+This repo shows several labs on Gemma 3:
 
-* **Inference Gemma 2-9B** in Colab.
-* **Inference Gemma 1-2B** with Keras 3 in Colab.
+* **Inference Gemma 3-4B-IT** using Hugging Face libraries.
+* **Inference Gemma 3-4B-IT and 3n-E4B-IT** using unloth library.
 * **Fine-tune Gemma 1-7B** (8.54B parameters), using a `g2-standard-12` machine type with 1xL4 NVidia GPU in **Vertex AI Training**. The model is 4-bit quantized using [NF4](https://arxiv.org/abs/2305.14314) (QLoRA).
 
 
-## The model: Gemma
+## The model: Gemma 3
 
-[Gemma](https://www.kaggle.com/m/3301) is a family of lightweight, state-of-the-art open models from Google, built from the same research and technology used to create the Gemini models. It's released with a [free license for commercial and educational use](https://ai.google.dev/gemma/terms).ddd
+[Gemma 3](https://www.kaggle.com/models/google/gemma-3) is a family of lightweight, state-of-the-art open models from Google, built from the same research and technology used to create the Gemini models. It's released with a [free license for commercial and educational use](https://ai.google.dev/gemma/terms).
 
-Gemma model family are text-to-text, decoder-only large language models, available in English, with open weights, pre-trained variants, and instruction-tuned variants. Gemma models are well-suited for a variety of text generation tasks, including question answering, summarization, and reasoning. Their relatively small size makes it possible to deploy them in environments with limited resources such as a laptop, desktop or your own cloud infrastructure, democratizing access to state of the art AI models and helping foster innovation for everyone.
+Gemma model family are multimodal, decoder-only large language models, multilingual, with open weights, pre-trained variants, and instruction-tuned variants. Gemma models are well-suited for a variety of text generation tasks, including question answering, summarization, and reasoning. Their relatively small size makes it possible to deploy them in environments with limited resources such as a laptop, desktop or your own cloud infrastructure, democratizing access to state of the art AI models and helping foster innovation for everyone.
 
-Inputs and outputs:
+Gemma 3n is a version of Gemma 3 optimized for devices like phones, laptops, and tablets. This model includes innovations in parameter-efficient processing, including **Per-Layer Embedding (PLE) parameter caching** and a **MatFormer model architecture** that provides the flexibility to reduce compute and memory requirements. These models feature audio input handling, as well as text and visual data. These models were trained with data in **over 140 languages**.
 
-* Input: Text string, such as a question, a prompt, or a document to be summarized.
-* Output: Generated English-language text in response to the input, such as an answer to a question, or a summary of a document.
+Gemma 3n models use selective parameter activation technology to reduce resource requirements. This technique allows the models to operate at an effective size of 2B and 4B parameters, which is lower than the total number of parameters they contain. For more information on
 
 Available sizes:
 
-* Gemma 1-2B: 18-layer model
-* Gemma 1-2B-IT: 18-layer model with instruction tuning
-* Gemma 1-7B: 28-layer model
-* Gemma 1-7B-IT: 28-layer model with instruction tuning
+* Gemma 3-270M (text only)	
+* Gemma 3-1B (text only)	
+* Gemma 3-4B	
+* Gemma 3-12B	
+* Gemma 3-27B
+* gemma 3n-E2B (5B parameters)
+* gemma 3n-E4B (8B parameters)
 
-Gemma 1 Main features:
+Model card for Gemma 3 [here](https://ai.google.dev/gemma/docs/core/model_card_3) and paper [here](https://arxiv.org/abs/2503.19786). 
 
-* English-only, text-only (not multimodal)
-* Decoder-only transformer.
-* 8k context length.
-* 2T and 6T tokens (Gemma 2B and 7B respectively).
-
-Model card [here](https://www.kaggle.com/models/google/gemma) and paper [here](http://goo.gle/GemmaReport). Gemma 7B-IT model can be downloaded from [Hugging Face](https://huggingface.co/google/gemma-7b-it). 
+Model card for Gemma 3n [here](https://ai.google.dev/gemma/docs/gemma-3n/model_card).
 
 
-## Fine-tuning Gemma1- 7B on Vertex AI Training with QLoRA
+## Fine-tuning Gemma 1-7B on Vertex AI Training with QLoRA
 
 The dataset [Abirate/english_quotes](https://huggingface.co/datasets/Abirate/english_quotes) is a dataset of all the quotes retrieved from goodreads quotes. This dataset can be used for multi-label text classification and text generation. The content of each quote is in English and concerns the domain of datasets for NLP and beyond.
 
